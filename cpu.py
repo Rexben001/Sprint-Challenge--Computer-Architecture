@@ -19,3 +19,34 @@ NOT = 0b01101001
 SHL = 0b10101100
 SHR = 0b10101101
 MOD = 0b10100100
+
+    def __init__(self):
+        """Construct a new CPU."""
+        self.ram = [0] * 256
+        self.reg = [0] * 8
+        self.pc = 0
+        self.sp = 0xF4
+        self.flags = 0b00000000
+
+        self.branchtable = {}
+        self.branchtable[LDI] = self.ldi
+        self.branchtable[PRN] = self.prn
+        self.branchtable[HLT] = self.hlt
+        self.branchtable[MUL] = self.mul
+        self.branchtable[POP] = self.pop
+        self.branchtable[PUSH] = self.push
+        self.branchtable[CALL] = self.call
+        self.branchtable[RET] = self.ret
+        self.branchtable[ADD] = self.add
+        self.branchtable[JNE] = self.jne
+        self.branchtable[JEQ] = self.jeq
+        self.branchtable[JMP] = self.jmp
+        self.branchtable[CMP] = self.cmp
+        self.branchtable[XOR] = self.XOR
+        self.branchtable[ADDI] = self.addi
+        self.branchtable[AND] = self.AND
+        self.branchtable[OR] = self.OR
+        self.branchtable[NOT] = self.NOT
+        self.branchtable[SHL] = self.SHL
+        self.branchtable[SHR] = self.SHR
+        self.branchtable[MOD] = self.MOD
